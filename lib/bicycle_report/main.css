@@ -1,0 +1,88 @@
+body {
+	background-color: #FAFAFA;
+}
+
+#full-page-content {
+	margin-left: 8%;
+	margin-right: 8%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #444;
+	font-family: times new roman;
+	margin-bottom: 4px;
+} 
+
+h1.main_title {
+	border-bottom: 1px solid #DDD;
+	margin-top: 0px;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+.box {
+	margin-left: 8px;
+	margin-right: 8px;
+}
+
+.round-colored, .round-missing-data {
+	border-radius: 10px;
+	background: #e6e5e2;	
+	box-shadow: 0 -1px 1px #c0bfbc inset;
+    width: 70%;
+    margin: auto;
+}
+
+#progressBar div {
+    color: #fff;
+    font-size: 12px;
+    height: 100%;
+    line-height: 22px;
+    width: 100%;
+}
+.round-colored div, .round-missing-data div {
+    font-family: "Josefin Sans",Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+  	border-radius: 9px;
+	box-shadow: 0 2px 2px #333;	
+	background-color: #FF2626;
+	background: -webkit-linear-gradient(top, #FF2626, #A31B1B);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ff0000), to(#A31B1B)); 
+	background: -moz-linear-gradient(top, #FF2626, #A31B1B); 
+	background: -ms-linear-gradient(top, #FF2626, #A31B1B); 
+	background: -o-linear-gradient(top, #FF2626, #A31B1B);
+    text-align: right;
+}
+
+.round-missing-data div {
+    font-family: "Josefin Sans",Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+  	border-radius: 9px;
+	box-shadow: 0 2px 2px #333;	
+	background-color: #f0f0f0;
+	background: -webkit-linear-gradient(top, #f0f0f0, #a3a3a3);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f0f0f0), to(#a3a3a3)); 
+	background: -moz-linear-gradient(top, #f0f0f0, #a3a3a3); 
+	background: -ms-linear-gradient(top, #f0f0f0, #a3a3a3); 
+	background: -o-linear-gradient(top, #f0f0f0, #a3a3a3);
+    width: 50%;
+    text-align: center;
+}
+
+#progressBarDescription p {
+    width: 100%;
+    text-align: center;
+    font-family: "Josefin Sans",Helvetica,Arial,sans-serif;
+    margin-top: 0px;
+}
+
+.shadowed_box {
+	box-shadow: 8px 8px 8px #ddd;
+	text-align: center;
+	margin-bottom: 20px;
+	width: auto;
+}
