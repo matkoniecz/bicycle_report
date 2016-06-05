@@ -1,3 +1,4 @@
+# encoding: UTF-8
 def get_motorized_roads
 	return ['motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 
 		'tertiary', 'tertiary_link', 'unclassified', 'residential', 'service', 'raceway', "living_street",
@@ -172,45 +173,65 @@ def is_cycle_crossing(lat, lon)
 	return false, debug
 end
  
+def get_standard_json_query_results(filters)
+	query = '[out:json][timeout:150];
+(
+' + filters + '
+);
+out body;
+>;
+out skel qt;'
+	return get_query_result(query)
+end
+
 def get_bicycle_parkings_as_json(bb)
-	query = '[out:json][timeout:25];
-(
-  node["amenity"="bicycle_parking"](' + bb + ');
+	filters = '  node["amenity"="bicycle_parking"](' + bb + ');
   way["amenity"="bicycle_parking"](' + bb + ');
-  relation["amenity"="bicycle_parking"](' + bb + ');
-);
-out body;
->;
-out skel qt;'
-	return get_query_result(query)
+  relation["amenity"="bicycle_parking"](' + bb + ');'
+	return get_standard_json_query_results(filters)
 end
 
-def get_separated_bicycle_ways_as_json(bb, filter)
-	query = '[out:json][timeout:250];
-(
-way["highway"="cycleway"][foot!~"."]' + filter + '(' + bb + ');
-way["highway"="cycleway"][foot=no]' + filter + '(' + bb + ');
-way[highway=path][bicycle=designated][segregated=yes]' + filter + '(' + bb + ');
-);
-out body;
->;
-out skel qt;'
-	return get_query_result(query)
+def get_separated_bicycle_ways_as_json(bb, surface, additional_filters="")
+	common = "[surface=#{surface}]#{additional_filters}"  + '(' + bb + ')'
+	filters = '  way[highway=cycleway][foot!~"."]' + common + ';
+  way[highway=cycleway][foot=no]' + common + ';
+  way[cycleway=lane]' + additional_filters + '(' + bb + ');'
+	['cycleway', 'path', 'footway', 'pedestrian', 'bridleway'].each {|highway|
+		['designated', 'yes'].each {|bicycle|
+			['surface', '"cycleway:surface"'].each { |surface_tag|
+				filters += "\n  way[highway=#{highway}][bicycle=#{bicycle}][segregated=yes][#{surface_tag}=#{surface}]#{additional_filters}(#{bb});"
+			}
+		}
+	}
+	return get_standard_json_query_results(filters)
+	#TODO complain about cycleway:surface + surface!=paved
 end
 
-def get_nonseparated_bicycle_ways_as_json(bb, filter)
-	query = '[out:json][timeout:250];
-(
-way["highway"="cycleway"][foot=yes]' + filter + '(' + bb + ');
-way[highway=path][bicycle=designated][segregated=no]' + filter + '(' + bb + ');
-way[highway=path][bicycle=yes]' + filter + '(' + bb + ');
-way[highway=footway][bicycle=yes]' + filter + '(' + bb + ');
-way[highway=pedestrian][bicycle=yes]' + filter + '(' + bb + ');
-);
-out body;
->;
-out skel qt;'
-	return get_query_result(query)
+def get_nonseparated_bicycle_ways_as_json(bb, surface, additional_filters="")
+	filters = ''
+	['cycleway', 'path', 'footway', 'pedestrian', 'bridleway'].each {|highway|
+		['designated', 'yes'].each {|bicycle|
+			['surface', '"cycleway:surface"'].each { |surface_tag|
+				filters += "\n  way[highway=#{highway}][bicycle=#{bicycle}][segregated=no][#{surface_tag}=#{surface}]#{additional_filters}(#{bb});"
+				if bicycle == 'yes'
+					filters += "\n  way[highway=#{highway}][bicycle=#{bicycle}][segregated!~\".\"][#{surface_tag}=#{surface}]#{additional_filters}(#{bb});"
+				end
+			}
+		}
+	}
+	return get_standard_json_query_results(filters)
+end
+
+def get_missing_segregation_status_bicycle_ways_as_json(bb)
+	filters = 'way[highway=cycleway][foot=yes][segregated!=no][segregated!=yes]' + '(' + bb + ');'
+	['cycleway', 'path', 'footway', 'pedestrian', 'bridleway'].each {|highway|
+		['designated', 'yes'].each {|bicycle|
+			['surface', '"cycleway:surface"'].each { |surface_tag|
+				filters += "\n  way[highway=#{highway}][bicycle=#{bicycle}][segregated!=no][segregated!=yes](#{bb});"
+			}
+		}
+	}
+	return get_standard_json_query_results(filters)
 end
 
 def get_bicycle_ways_as_json(bb, filter)
@@ -226,7 +247,7 @@ way[highway=pedestrian][bicycle=yes]' + filter + '(' + bb + ');
 out body;
 >;
 out skel qt;'
-	return get_query_result(query)
+	return get_standard_json_query_results(filters)
 end
 
 def is_private(access_tag)

@@ -11,11 +11,11 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = '>= 1.8.23'
 
-  s.add_dependency 'i18n'
-  s.add_dependency 'leafleter'
-  s.add_dependency 'overhelper'
-  s.add_dependency 'rest_client'
-  s.add_dependency 'persistent-cache'
+  s.add_dependency 'i18n', '~>0'
+  s.add_dependency 'leafleter', '~>0'
+  s.add_dependency 'overhelper', '~>0'
+  s.add_dependency 'rest-client', '~>1'
+  s.add_dependency 'persistent-cache', '~>0'
   #digest/sha1 is from stdlib
 
   # If you need to check in files that aren't .rb files, add them here

@@ -1,4 +1,10 @@
-$cache = Persistent::Cache.new("cache", 360000) # 100 hour freshness
+# encoding: UTF-8
+
+#require 'persistent-cache' #Persistent::Cache
+#require 'uri' #URI.escape
+#require 'digest/sha1' #Digest::SHA1
+
+$cache = Persistent::Cache.new("cache", 10*60*60) # 100 hour freshness 
 
 def fetch(url)
 	begin
