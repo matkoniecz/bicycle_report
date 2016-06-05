@@ -18,6 +18,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'persistent-cache', '~>0'
   #digest/sha1 is from stdlib
 
+  s.add_development_dependency 'rspec', '~>3'
+
   # If you need to check in files that aren't .rb files, add them here
   s.files        = Dir['{lib}/**/*.rb', 'bin/*', '*.txt', '*.md']
   s.require_path = 'lib'
