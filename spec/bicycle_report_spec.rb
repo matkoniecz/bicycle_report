@@ -1,4 +1,4 @@
-require 'bicycle_report'
+require_relative '../lib/bicycle_report'
 
 RSpec.describe ReportGenerator do
   describe "#start_writing_summary_pages" do
