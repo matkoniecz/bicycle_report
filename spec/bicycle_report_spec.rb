@@ -8,6 +8,7 @@ RSpec.describe ReportGenerator do
       lon_min = 19.78
       lon_max = 20.09
       generator = ReportGenerator.new(lat_min, lat_max, lon_min, lon_max)
+      generator.set_language(:pl)
       expect(generator.start_writing_summary_pages).to eq(nil)
     end
   end
