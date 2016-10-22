@@ -76,7 +76,6 @@ class ReportGenerator
 		start_writing_page(main_page, "main_page_title")
 		open(main_page, 'a') {|file|
 			file.puts section("main_page_subtitle", "h1")
-			file.puts section(@location, "h2")
 		}
 
 		start_writing_page(osm_state_page, "osm_state_summary_title")
