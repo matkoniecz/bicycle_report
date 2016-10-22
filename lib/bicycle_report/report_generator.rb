@@ -64,7 +64,7 @@ class ReportGenerator
 		<head>
 			<title>" +  I18n.t(title_string_name) + "</title>
 			<meta charset=\"utf-8\" />
-			<link rel=\"stylesheet\" type=\"text/css\" href=\"./main.css\" />
+			<link rel=\"stylesheet\" type=\"text/css\" href=\"./" + css_filename + "\" />
 		</head>
 		<body>
 		<div id=\"full-page-content\">"
@@ -114,6 +114,12 @@ class ReportGenerator
 			file.puts "</div>"
 			file.puts "</body>"
 			file.puts "</html>"
+		}
+	end
+
+	def copy_css
+		open(css_filename, 'w') {|file|
+			file.puts(get_css)
 		}
 	end
 
