@@ -33,7 +33,7 @@ class BicycleWayRaportGenerator < ReportGenerator
 		}
 	end
 
-	def process
+	def process(contraflow_exceptions_by_names)
 		#TODO - cycleway:surface
 		json_string = get_separated_bicycle_ways_as_json(overpass_bb, "asphalt")
 		sidebar_explanation = " - asfaltowych dróg dla rowerów i ulic z pasem dla rowerów w obu kierunkach (kontrapasy nie są wliczane)"
@@ -50,5 +50,10 @@ class BicycleWayRaportGenerator < ReportGenerator
 		sidebar_explanation = " - brak segregated=yes/no"
 		page_title = "bicycle_ways_missing_segregated_info.html"
 		generate_page_about_ways(json_string, page_title, sidebar_explanation, 'purple')
+
+		json_string = get_missing_contraflow_as_json(overpass_bb, contraflow_exceptions_by_names)
+		sidebar_explanation = " - #{I18n.t('missing_contraflow_title')}\n\n#{I18n.t('missing_contraflow').gsub("\n", '<br>')}"
+		page_title = "bicycle_ways_missing_contraflow.html"
+		generate_page_about_ways(json_string, page_title, sidebar_explanation, 'red')
 	end
 end
