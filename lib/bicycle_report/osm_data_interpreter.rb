@@ -235,13 +235,36 @@ def get_missing_contraflow_as_json(bb, contraflow_exceptions_by_names)
 	not_unimportant = '["service"!="parking_aisle"]'
 	not_link_road = '["highway"!="motorway_link"]["highway"!="primary_link"]["highway"!="secondary_link"]["highway"!="tertiary_link"]'
 	truly_oneway = not_link_road + '["service"!="turning_loop"]["junction"!="roundabout"]["dual_carriageway"!="yes"]["dual_carriageway:bicycle"!="yes"]'
-	cycleable_road = '["highway"!="motorway"]["highway"!="proposed"]["bicycle"!="no"]["bicycle"!="private"]["bicycle"!="use_sidepath"]'
+	cycleable_road = '["highway"!="motorway"]["highway"!="construction"]["highway"!="proposed"]["bicycle"!="no"]["bicycle"!="private"]["bicycle"!="use_sidepath"]'
+	fragile_exceptions = '["highway"!="primary"]["highway"!="secondary"]["highway"!="trunk"]' #TODO HACK
 	names = ""
-	contraflow_exceptions_by_names.each{|excluded|
-		names += "['name'!='#{excluded}']"
+	contraflow_exceptions_by_names.each{|street_name|
+		names += "['name'!='#{street_name}']"
 	}
-  filters = 'way["highway"]["name"]["oneway"="yes"]["oneway:bicycle"!="no"]' + not_unimportant + truly_oneway + cycleable_road + names + '["highway"!="primary"]["highway"!="secondary"]' + '(' + bb + ');'
-  filters += 'way["highway"]["oneway:bicycle"="yes"]["oneway:bicycle"!="no"]' + not_unimportant + truly_oneway + cycleable_road + names + '["highway"!="primary"]["highway"!="secondary"]' + '(' + bb + ');'
+  filters = 'way["highway"]["name"]["oneway"="yes"]["oneway:bicycle"!="no"]' + not_unimportant + truly_oneway + cycleable_road + names + fragile_exceptions + '(' + bb + ');'
+  filters += 'way["highway"]["oneway:bicycle"="yes"]["oneway:bicycle"!="no"]' + not_unimportant + truly_oneway + cycleable_road + names + fragile_exceptions + '(' + bb + ');'
+	return get_standard_json_query_results(filters)
+end
+
+#TODO standarize get_
+def existing_contraflow_as_json(bb)
+	return get_standard_json_query_results('way["oneway:bicycle"="no"]["oneway"="yes"]["highway"]' + '(' + bb + ');')
+end
+
+def unwanted_contraflow_as_json(bb, contraflow_unwanted_by_names)
+	filters = ""
+	contraflow_unwanted_by_names.each{|street_name|
+		filters += "way['name'='#{street_name}'][oneway=yes]( #{bb} );"
+	}
+	return get_standard_json_query_results(filters)
+end
+
+def dual_carriageway_as_json(bb, contraflow_unwanted_by_names)
+	filters = ""
+	contraflow_unwanted_by_names.each{|street_name|
+		filters += "way[dual_carriageway=yes]( #{bb} );"
+		filters += "way['dual_carriageway:bicycle'=yes]( #{bb} );"
+	}
 	return get_standard_json_query_results(filters)
 end
 

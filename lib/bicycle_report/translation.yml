@@ -11,25 +11,34 @@ pl:
   uncycleable_crossing_general_pl_law_change: "Od września 2015 (patrz http://miastadlarowerow.pl/index_wiadomosci.php?dzial=2&kat=9&art=135) łatwiej jest wyznaczać przejazdy rowerowe. Nowelizacja rozporządzenia ułatwia wyznaczanie przejazdu łączonego z przejściem, również tam gdzie nie ma olbrzymich ilości miejsca."
   uncycleable_crossing_alternatives: "Warto pamiętać że są miejsca gdzie brak przejazdu jest tylko objawem prawdziwego problemu którego nie rozwiąże wyznaczenie przejścia. Czasem to cała wydzielona trasa rowerowa jest pomyłką (np. na Daszyńskiego) a problem należy rozwiązać przez likwidację takiej antyinfrastruktury rowerowej ponieważ jazda drogą jest bezpieczniejsza i wygodniejsza. Czasem przejścia są tylko jednym z wielu problemów i domalowanie przejazdów dużo nie pomoże (np. wzdłuż Zakopianki). W niektórych miejscach przejścia wyznaczone są w strefie zamieszkania gdzie są zbędne (np w rejonie Plant) - w takich miejscach problemem jest nie brak przejazdu a zbędnie wyznaczone przejście dla pieszych"
   missing_contraflow_title: "Gdzie można jechać rowerem tylko w jedną stronę"
-  missing_contraflow: 'W Krakowie nie brak ulic jednokierunkowych. Większość z nich istnieje ponieważ wyznaczono tak dużo miejsc parkingowych iż nie istnieje możliwość minięcia się dwóch samochodów. W pewnych przypadkach motywacją też jest uniemożliwienie ruchu tranzytowego bocznymi uliczkami.
+  missing_contraflow: |
+    W Krakowie nie brak ulic jednokierunkowych. Większość z nich istnieje ponieważ wyznaczono tak dużo miejsc parkingowych iż nie minięcie się dwóch samochodów jest niemożliwe. W pewnych przypadkach celem jest ograniczenie ruchu na bocznych ulicach.
+    
+    Obie przyczyny nie odnoszą się do rowerów, nie ma więc powodów by jednokierunkowość dotyczyła też rowerzystów. Usunięcie tego zbędnego utrudnienia jest proste, wystarczy zezwolić na jazdę rowerem w obu kierunkach na drogach jednokierunkowych dla samochodów. Pozwala to rowerzystom na omijanie niebezpiecznych miejsc oraz skracanie trasy. Dobrym przykładem jest ulica Szlak będącą alternatywę dla jazdy Alejami czy Kopernika która pozwala często na ominięcie Lubicz. Dzięki temu jazda rowerem, bez kluczenia po labiryncie jednokierunkowych ulic jest bezpieczniejsza i atrakcyjniejsza.
+    
+    Oczywiście są nieliczne wyjątki. W Krakowie takim przypadkiem jest Przegorzalska która jest wąską, stromą, krętą drogą gdzie dopuszczenie dwukierunkowego ruchu byłoby niebezpieczne.
+    
+    Wprowadzenie kontraruchu jest bardzo tanie w porównaniu do innych inwestycji w infrasturę komunikacyjną. Zazwyczaj wystarcza projekt, użycie farby i doczepienie kilka tabliczek "nie dotyczy rowerów".
+    
+    Oczywiście, do każdego nowego rozwiązania - również tych dobrych - trzeba się przyzwyczaić. Na początku ruch rowerów w obu kierunkach może być dla wielu dziwny, zaskakujący i podejrzany. Jednak w ciągu kilku lat staje się to normalne. 
+    
+    Drogi jednokierunkowe dotyczące również rowerów świadczą najczęściej o braku wiedzy na temat infrastruktury rowerowej. Na szczęście w Krakowie co roku pojawiają się kolejne dopuszczenia ruchu rowerowego w dwie strony. Na przykład 2016 w Krakowie poprawiono 10 km dróg. Jednak jeszcze trochę zostało.
+    
+    Kontraruch może mieć różne formy - kontrapasy, sierżanty rowerowe, tylko oznakowanie pionowe (przykłady z Warszawy http://www.zm.org.pl/?a=rowerowy_skok_cywilizacyjny-4 Brukseli http://www.zm.org.pl/?a=bruksela-09c-kontrapasy Kraków ).
 
-Obie przyczyny nie odnoszą się do rowerów, nie ma więć powodów by jednokierunkowość dotyczyła też rowerzystów. Umożliwienie jazdy w obu kierunkach pozwala na udrożnienie i zwiększenie przepustowości bocznych dróg, pozwalając rowerzystom na omijanie niebezpiecznych i nieprzyjemnych miejsc oraz skracanie trasy. 
+    W niektórych miejscach (np. wschodni fragment Alei 3 Maja) potrzebne jest nie dopuszczenie ruchu w obu kierunkach a dobudowanie brakującego fragmentu drogi rowerowej i przejazdów. Mapa ta nie pokazuje jak istotne jest dopuszczenie kontraruchu w danym miejscu - ulice Świętego Marka i Świętego Tomasza w tym momencie się uzupełniają i tamten kontraruch nie jest bardzo pilny. Natomiast np. udrożnienie Lea stworzyłoby ważną trasę do centrum.
+    
+    Mapa ta nie pokazuje też jak trudne jest zalegalizowanie ruchu rowerowego w obu kierunkach w danym miejscu. Często wiążę się to z drobną urzędową polityką i warto z daną ulicą odpuścić by załatwić kilka innych.
+    
+    http://ibikekrakow.com/2011/12/08/26-kilometrow-nowych-kontrapasow/ ma starą ale niestety nadal częsiowo aktualną listę ulic gdzie kontrapasy są najpilniejsze. Część propozycji została zrealizowana, niestety od 2011 pojawiły się też nowe drogi jednokierunkowe bez dopuszczenia rowerów w obu kierunkach (jak np. Hamernia).
+    
+    Pozytywnym przykładem jest Radom gdzie nie ma dróg jednokierunkowych dla rowerów - http://www.transport-publiczny.pl/wiadomosci/radom-rowerem-pod-prad-52-ulice-z-kontraruchem-3192.html
+    
+    Przykładem iż jest u nas całkiem dobrze jest Warszawa <link> gdzie temat kontrapasów jest w lesie.
+    
+    Zgłoszenia wszelkich usterek, niespójności i problemów są mile widziane. 
 
-Dopuszczenie dwukierunkowego ruchu rowerów na ulicach jednokierunkowych tworzy alternatywę dla niebezpiecznych skrzyżowań i głównych ulic, pozwala na dojechanie rowerem bez kluczenia po labiryncie jednokierunkowych ulic. Zwiększa to bezpieczeństwo, skraca trasy i zwiększa atrakcyjność roweru jako środka komunikacji.
-
-Oczywiście są nieliczne wyjątki. W Krakowie takim przypadkiem jest Przegorzalska która jest wąską, stromą, krętą drogą gdzie dopuszczenie dwukierunkowego ruchu byłoby niebezpieczne.
-
-Kontraruch jest bardzo tani (zazwyczaj wystarczy trochę farby i kilka tabliczek "nie dotyczy rowerów"), drogi jednokierunkowe dotyczące róœnież rowerów świadczą najczęściej o braku wiedzy na temat infrastruktury rowerowej.
-
-Oczywiście, do każdego nowego rozwiązania - również tych dobrych - trzeba się przyzwyczaić. Na początku ruch rowerów w obu kierunkach może być dla wielu dziwny, zaskakujący i podejrzany. Jednak w ciągu kilku lat staje się to normalne. 
-
-Na szczęscie co roku pojawiają się nowe dopuszczenia ruchu rowerowego w dwie strony, w 2016 w Krakowie poprawiono 10 km dróg. Jednak jeszcze trochę zostało.
-
-Kontraruch może mieć różne formy - kontrapasy, sierżanty rowerowe, tylko oznakowanie pionowe (przykłady z Warszawy http://www.zm.org.pl/?a=rowerowy_skok_cywilizacyjny-4 Brukseli http://www.zm.org.pl/?a=bruksela-09c-kontrapasy Kraków )
-http://polskanarowery.sport.pl/msrowery/1,105126,9017621,Kontrapas___wszystko_co_warto_o_nim_wiedziec.html
-
-Warto jednak zauważyć iż celem nie jest wyznaczanie dużej ilości kontrapasów, celem jest zmniejszenie ilości dróg które są jednokierunkowe dla rowerzystów. Na przykład dla rowerzystów wprowadzenie na ulicy jednokierunkowego ruchu wraz z dodaniem kontrapasa nie jest zmianą na lepsz (x km nowej infrastruktury rowerowej!) lecz utrzymaniem stanu bieżącego, w związku z tym mapy z "hej ile nowych kontrapasów są nieco mylące".'
-
+    
   bicycle_parking_title: "Parkingi rowerowe"
   bicycle_parking_quality: "Stan parkingów rowerowych"
   good_available_bicycle_parking_count: "Liczba publicznie dostępnych dobrze przygotowanych miejsc parkingowych dla rowerów. W szczególności wyrwikółki nie są liczone jako sensowne stojaki."
