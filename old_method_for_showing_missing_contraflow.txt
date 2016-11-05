@@ -1,0 +1,44 @@
+oneway:
+
+ruby download.rb
+
+osmfilter interpreter.osm --keep="oneway=yes oneway:bicycle=yes" --drop-ways="oneway:bicycle=no" --drop-ways="service=turning_loop =driveway =parking_aisle" --drop-ways="junction=roundabout"  --drop-ways="dual_carriageway=yes" --drop-ways="dual_carriageway:bicycle=yes" --drop-ways="highway=primary =secondary" --drop-relations > oneway.osm
+
+osmfilter oneway.osm --keep="highway=primary =secondary =tertiary =residential =unclassified =track =living_street =service" > relevant_oneway.osm
+osmfilter relevant_oneway.osm --drop-ways="access=private =no" --drop-ways="bicycle=no =private =use_sidepath" > accessible_relevant_oneway.osm
+
+
+osmfilter accessible_relevant_oneway.osm --keep="name" > named_relevant_oneway.osm
+
+osmfilter named_relevant_oneway.osm --drop="name=Przegorzalska =Kapitana\ Mieczysława\ Medweckiego =Aleja\ Żubrowa =Aleja\ Kasy\ Oszczędności\ Miasta\ Krakowa =Ofiar\ Dąbia =Słotna =Biskupa\ Jana\ Prandoty =Józefa\ Marcika =Cystersów =Centralna =Mieczysława\ Medweckiego =Doktora\ Judyma =Rzemieślnicza =Franciszka\ Bujaka =Plac\ Braci\ Dudzińskich =Leonida\ Teligi =Mieczysławy\ Ćwiklińskiej =Bieżanowska =Prądnicka =Józefa\ Dietla =Wielicka =Na\ Kozłówce =Henryka\ Kamieńskiego" --keep-tags="all name highway=primary =secondary =tertiary =residential =unclassified =track =living_street =service" --drop-author > final_oneway.osm
+
+osmfilter final_oneway.osm --keep="highway=primary =secondary =tertiary =residential =unclassified =track =living_street =service" > really_final_oneway.osm
+
+CartoDB CartoCSS
+
+/** simple visualization */
+
+#really_final_oneway_lines{
+  line-color: #D6301D;
+  line-width: 2;
+  line-opacity: 0.7;
+}
+
+#really_final_oneway_lines::labels {
+  text-name: [name];
+  text-face-name: 'DejaVu Sans Book';
+  text-size: 10;
+  text-label-position-tolerance: 10;
+  text-fill: #000;
+  text-halo-fill: #FFF;
+  text-halo-radius: 1;
+  text-dy: -6;
+  text-allow-overlap: true;
+  text-placement: line;
+  text-placement-type: simple;
+}
+
+published on http://www.skyscrapercity.com/showpost.php?p=127551977&postcount=8051
+
+http://i.imgur.com/ULepcPg.png
+wersja interaktywna na http://cdb.io/1GptwlD 
