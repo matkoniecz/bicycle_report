@@ -31,7 +31,6 @@ class CrossingReportGenerator < ReportGenerator
 	end
 
 	def generate_debug_html_file_about_crossings(page)
-		sidebar_content = get_sidebar_for_main_crossing_page
 		title = I18n.t("uncycleable_crossing_title")
 		layer = Leafleter.get_standard_OSM_tile_Layer()
 
