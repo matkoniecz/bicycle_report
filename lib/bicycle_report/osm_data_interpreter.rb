@@ -89,8 +89,6 @@ def get_crossings(bb, overpass_filter)
 	node.on_cycleway.on_road'+overpass_filter+';
 	out body;'
 
-	puts query
-
 	text = get_query_result(query)
 	usable = Overhelper.list_of_locations_from_overpass_into_array(text)
 	return usable
