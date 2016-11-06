@@ -4,15 +4,18 @@ require_relative 'report_generator'
 require_relative 'osm_data_interpreter'
 
 class CrossingReportGenerator < ReportGenerator
+	def wrap_sidebar(sidebar_content)
+		return '<div class="box">' + sidebar_content + '</div>'
+	end
+
 	def get_sidebar_for_main_crossing_page()
-		sidebar_content = '<div class="box">'
+		sidebar_content = ""
 		sidebar_content += section("uncycleable_crossing_title", "h2")
 		sidebar_content += get_progress_bar(@ok_percent, I18n.t("uncycleable_crossing_progress_short"))
 		sidebar_content += section("uncycleable_crossing_general_description", "p")
 		sidebar_content += section("uncycleable_crossing_general_pl_law_change", "p")
 		sidebar_content += section("uncycleable_crossing_alternatives", "p")
-		sidebar_content += '</div>'
-		return sidebar_content
+		return wrap_sidebar(sidebar_content)
 	end
 
 	def generate_general_html_file_about_crossings(page)
