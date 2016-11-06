@@ -5,7 +5,7 @@ pl:
   main_page_subtitle: "Automatycznie generowany z danych Open Street Map"
   uncycleable_crossing_title: "Nieprzejezdne przejazdy"
   uncycleable_crossing_progress_short: "Taka część skrzyżowań wydzielonych tras rowerowych i dróg jest już przejezdna"
-  bad_crossing_count: "Liczba przerw w trasach rowerowych gdzie z braku przejazdu rowerzysta ma obowiązek przerwania jazdy i zejścia z roweru."
+  uncycleable_crossing_count: "Liczba przerw w trasach rowerowych gdzie z braku przejazdu rowerzysta ma obowiązek przerwania jazdy i zejścia z roweru."
   uncycleable_crossing_removing_progress: "Wskaźnik ten pokazuje na jakiej części przepraw przez drogi na trasach rowerowych możliwe jest przedostanie się na drugą strone drogi bez bezwględnego obowiązku zatrzymania się i zejścia z roweru. Po likwidacji wszystkich takich wadliwych miejsc wskaźnik ten osiągnie 100% ."
   uncycleable_crossing_mapping_progress: "Postęp w zaznaczaniu czy w danym miejscu rowerzysta na trasie rowerowej może legalnie przekroczyć drogę bez przerywania jazdy."
   uncycleable_crossing_general_description: "Rowerem nie można legalnie przejechać po przejściu dla pieszych. Niestety, w wielu miejscach trasy rowerowe są przerwana przejściami. Oznacza to obowiązkiem zejścia z roweru na każdym takim wadliwym skrzyżowaniu."

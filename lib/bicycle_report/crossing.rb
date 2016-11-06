@@ -104,7 +104,7 @@ class CrossingReportGenerator < ReportGenerator
 			file.puts "<div class=\"shadowed_box\"><h1>"
 			file.puts @bad_crossings.length
 			file.puts "</h1>"
-			file.puts I18n.t("bad_crossing_count")
+			file.puts I18n.t("uncycleable_crossing_count")
 			file.puts "</div>"
 			file.puts section("uncycleable_crossing_progress_short", "h3")
 			file.puts I18n.t("uncycleable_crossing_removing_progress")
