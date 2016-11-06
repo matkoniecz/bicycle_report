@@ -28,6 +28,6 @@ pl:
 
   osm_state_summary_title: "Jakość danych Open Street Map"
   osm_data_quality_completness_title: "Kompletność danych"
-  osm_data_quality_completness: "Niestety, zazwyczaj tego nie da się ustalić w sposób zautomatyzowany. Czasem ta się to ustalić porównując OSM z innnymi źródłami, jednak nie jest to zawsze możliwe - zwłaszcza gdy OSM jest niekompletne a jednoczesnie nejlepszym źródłem."
+  osm_data_quality_completness: "Niestety, zazwyczaj tego nie da się ustalić w sposób zautomatyzowany. Czasem ta się to ustalić porównując OSM z innymi źródłami, jednak nie jest to zawsze możliwe. Częsta jest sytuacja gdy OSM jest niekompletne a jednocześnie jest najlepszym istniejącym źródłem."
   mapping_crossing_cycleability: "Czy przejazd jest przejezdny?"
   crossing_debug_sidebar: "czarny - brak danych na przejeździe czy przejezdny dla rowerów (jest highway=crossing bez bicycle=yes lub bicycle=no na trasie rowerowej)<br><br>czerwony - prawdopodobnie brak highway=crossing<br><br>niebieski - nieoczekiwane bicycle=no bez highway=crossing"
