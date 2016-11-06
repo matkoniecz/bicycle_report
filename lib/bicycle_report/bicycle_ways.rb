@@ -27,7 +27,7 @@ class BicycleWayRaportGenerator < ReportGenerator
 			sidebar_content = "#{distance_in_m.to_i/1000} km"
 			sidebar_content += sidebar_explanation
 			layer = Leafleter.get_positron_tile_Layer()
-			file.puts Leafleter.get_before("title", @center_lat, @center_lon, 13, layer, @map_width_percent, sidebar_content, './main.css')
+			file.puts Leafleter.get_before("title", @center_lat, @center_lon, @starting_zoom, layer, @map_width_percent, sidebar_content, './main.css')
 			file.puts lines
 			file.puts Leafleter.get_after()
 		}

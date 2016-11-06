@@ -8,6 +8,7 @@ class ReportGenerator
 		@lon_min = lon_min
 		@lon_max = lon_max
 		set_center_point()
+		@starting_zoom = 12
 
 		@sidebar_width_percent = 30
 		@map_width_percent = 100-@sidebar_width_percent
