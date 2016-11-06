@@ -98,18 +98,7 @@ class CrossingReportGenerator < ReportGenerator
 		@mapped_percent = (good + bad) *100 / (good + bad + unknown)		
 	end
 
-	def generate_html_files_about_crossings()
-		fetch_crossing_data()
-		output_numbers()
-		calculate_statistics()
-
-		debug_filename = 'crossing_debug.html'
-		normal_filename = 'crossings.html'
-		generate_general_html_file_about_crossings(normal_filename)
-		generate_debug_html_file_about_crossings(debug_filename)
-
-		layer = Leafleter.get_positron_tile_Layer()
-
+	def add_section_on_main_page(filename_of_page_with_detailed_data)
 		open(main_page, 'a') {|file|
 			file.puts section("uncycleable_crossing_title", "h2")
 			file.puts "<div class=\"shadowed_box\"><h1>"
@@ -120,8 +109,24 @@ class CrossingReportGenerator < ReportGenerator
 			file.puts section("uncycleable_crossing_progress_short", "h3")
 			file.puts I18n.t("uncycleable_crossing_removing_progress")
 			file.puts get_progress_bar(@ok_percent)
-			file.puts '<a href="./' + normal_filename + '">' + I18n.t("more_including_map") + '</a>'
+			file.puts '<a href="./' + filename_of_page_with_detailed_data + '">' + I18n.t("more_including_map") + '</a>'
 		}
+	end
+
+	def generate_html_files_about_crossings()
+		fetch_crossing_data()
+		output_numbers()
+		calculate_statistics()
+
+		debug_filename = 'crossing_debug.html'
+		filename_of_page_with_detailed_data = 'crossings.html'
+		generate_general_html_file_about_crossings(filename_of_page_with_detailed_data)
+		generate_debug_html_file_about_crossings(debug_filename)
+
+		layer = Leafleter.get_positron_tile_Layer()
+
+		add_section_on_main_page(filename_of_page_with_detailed_data)
+
 		open(osm_state_page, 'a') {|file|
 			file.puts section("mapping_crossing_cycleability", "h2")
 			file.puts I18n.t("uncycleable_crossing_mapping_progress")
