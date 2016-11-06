@@ -38,11 +38,11 @@ class CrossingReportGenerator < ReportGenerator
 		layer = Leafleter.get_standard_OSM_tile_Layer()
 
 		open(page, 'w') {|file|
-			sidebar = get_progress_bar(@mapped_percent)
+			sidebar = get_progress_bar(@mapped_percent) + I18n.t("crossing_debug_sidebar")
 			file.puts Leafleter.get_before(title, @center_lat, @center_lon, 13, layer, @map_width_percent, sidebar, './main.css')
 			style = {:color => "'black'", :opacity => 1}
 			@unknown_crossings.each{|crossing|
-				file.puts Leafleter.get_circle_marker("brak danych o przejeździe", crossing[:lat], crossing[:lon], 3, style)
+				file.puts Leafleter.get_circle_marker("", crossing[:lat], crossing[:lon], 3, style)
 			}
 
 			style = {:color => "'red'", :opacity => 1}
