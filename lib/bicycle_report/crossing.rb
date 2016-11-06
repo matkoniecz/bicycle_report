@@ -113,7 +113,7 @@ class CrossingReportGenerator < ReportGenerator
 		open(main_page, 'a') {|file|
 			file.puts section("uncycleable_crossing_title", "h2")
 			file.puts "<div class=\"shadowed_box\"><h1>"
-			file.puts @bad_crossings.length + (@unknown_crossings.length * @ok_percent/100).to_i
+			file.puts @bad_crossings.length
 			file.puts "</h1>"
 			file.puts I18n.t("bad_crossing_count")
 			file.puts "</div>"
