@@ -27,10 +27,10 @@ class BicycleWayRaportGenerator < ReportGenerator
 		return "#{distance_in_m.to_i/1000} km"
 	end
 
-	def generate_page_about_ways(json_string, page_title, sidebar_explanation, color)
+	def generate_page_about_ways(json_string, page_filename, sidebar_explanation, color)
 		ways = Overhelper.convert_to_ways(json_string)
 		distance_in_m, lines = compute_full_length_and_leafletify_lines(ways, color)
-		open(page_title, 'w') {|file|
+		open(page_filename, 'w') {|file|
 			sidebar_content = distance_in_m_to_text(distance_in_m)
 			sidebar_content += sidebar_explanation
 			layer = Leafleter.get_positron_tile_Layer()
@@ -94,27 +94,27 @@ class BicycleWayRaportGenerator < ReportGenerator
 		ways = Overhelper.convert_to_ways(json_string)
 		missing_contraflow_in_m, _ = compute_full_length_and_leafletify_lines(ways, 'color')
 		sidebar_explanation = " - #{I18n.t('missing_contraflow_title')}<br><br>#{I18n.t('missing_contraflow').gsub("\n", '<br>')}"
-		page_title = "bicycle_ways_missing_contraflow.html"
-		generate_page_about_ways(json_string, page_title, sidebar_explanation, 'red')
+		page_filename = "bicycle_ways_missing_contraflow.html"
+		generate_page_about_ways(json_string, page_filename, sidebar_explanation, 'red')
 
 		json_string = existing_contraflow_as_json(overpass_bb)
 		ways = Overhelper.convert_to_ways(json_string)
 		existing_contraflow_in_m, _ = compute_full_length_and_leafletify_lines(ways, 'color')
 		sidebar_explanation = " - #{I18n.t('existing_contraflow_title')}<br><br>#{I18n.t('existing_contraflow').gsub("\n", '<br>')}"
-		page_title = "bicycle_ways_existing_contraflow.html"
-		generate_page_about_ways(json_string, page_title, sidebar_explanation, 'green')
+		page_filename = "bicycle_ways_existing_contraflow.html"
+		generate_page_about_ways(json_string, page_filename, sidebar_explanation, 'green')
 
 		json_string = unwanted_contraflow_as_json(overpass_bb, contraflow_unwanted_by_names)
 		ways = Overhelper.convert_to_ways(json_string)
 		unwanted_contraflow_in_m, _ = compute_full_length_and_leafletify_lines(ways, 'color')
 		sidebar_explanation = " - #{I18n.t('unwanted_contraflow_title')}<br><br>#{I18n.t('unwanted_contraflow').gsub("\n", '<br>')}"
-		page_title = "bicycle_ways_unwanted_contraflow.html"
-		generate_page_about_ways(json_string, page_title, sidebar_explanation, 'purple')
+		page_filename = "bicycle_ways_unwanted_contraflow.html"
+		generate_page_about_ways(json_string, page_filename, sidebar_explanation, 'purple')
 
 		json_string = dual_carriageway_as_json(overpass_bb, contraflow_unwanted_by_names)
 		sidebar_explanation = " - #{I18n.t('dual_carriageway_title')}<br><br>#{I18n.t('dual_carriageway').gsub("\n", '<br>')}"
-		page_title = "bicycle_ways_dual_carriageway.html"
-		generate_page_about_ways(json_string, page_title, sidebar_explanation, 'purple')
+		page_filename = "bicycle_ways_dual_carriageway.html"
+		generate_page_about_ways(json_string, page_filename, sidebar_explanation, 'purple')
 
 		filename_of_page_with_detailed_data = 'contraflow.html'
 		generate_general_contraflow_page(filename_of_page_with_detailed_data, existing_contraflow_in_m, missing_contraflow_in_m, unwanted_contraflow_in_m)
@@ -125,19 +125,19 @@ class BicycleWayRaportGenerator < ReportGenerator
 		#TODO - cycleway:surface
 		json_string = get_separated_bicycle_ways_as_json(overpass_bb, "asphalt")
 		sidebar_explanation = " - asfaltowych dróg dla rowerów i ulic z pasem dla rowerów w obu kierunkach (kontrapasy nie są wliczane)"
-		page_title = "bicycle_ways_ddr.html"
-		generate_page_about_ways(json_string, page_title, sidebar_explanation, 'green')
+		page_filename = "bicycle_ways_ddr.html"
+		generate_page_about_ways(json_string, page_filename, sidebar_explanation, 'green')
 
 
 		json_string = get_nonseparated_bicycle_ways_as_json(overpass_bb, "asphalt")
 		sidebar_explanation = " - asfaltowych chodników z dopuszczonym ruchem rowerowym (zarówno tam gdzie rowerzysta jest zmuszony z ich skorzystać jeśli są w jego \"kierunku jazdy\" jak i te gdzie korzystanie jest dobrowolne)"
-		page_title = "bicycle_ways_cpr.html"
-		generate_page_about_ways(json_string, page_title, sidebar_explanation, 'green')
+		page_filename = "bicycle_ways_cpr.html"
+		generate_page_about_ways(json_string, page_filename, sidebar_explanation, 'green')
 
 		json_string = get_missing_segregation_status_bicycle_ways_as_json(overpass_bb)
 		sidebar_explanation = " - brak segregated=yes/no"
-		page_title = "bicycle_ways_missing_segregated_info.html"
-		generate_page_about_ways(json_string, page_title, sidebar_explanation, 'purple')
+		page_filename = "bicycle_ways_missing_segregated_info.html"
+		generate_page_about_ways(json_string, page_filename, sidebar_explanation, 'purple')
 
 		contraflow(contraflow_exceptions_by_names, contraflow_unwanted_by_names)
 	end
