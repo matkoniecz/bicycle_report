@@ -83,10 +83,10 @@ class CrossingReportGenerator < ReportGenerator
 	end
 
 	def output_numbers()
-		puts "bad: #{@bad_crossings.length}"
-		puts "good: #{@good_crossings.length}"
-		puts "unknown: #{@unknown_crossings.length}"
-		puts "unexpected bad: #{@bad_but_no_crossings.length}"
+		puts "bad crossing: #{@bad_crossings.length}"
+		puts "good crossing: #{@good_crossings.length}"
+		puts "unknown crossing: #{@unknown_crossings.length}"
+		puts "unexpected bad crossing: #{@bad_but_no_crossings.length}"
 		puts "missing highway=crossing: #{@likely_missing_crossings.length}"
 	end
 
