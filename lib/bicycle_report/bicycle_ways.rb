@@ -47,7 +47,7 @@ class BicycleWayRaportGenerator < ReportGenerator
 		generate_page_about_ways(json_string, page_title, sidebar_explanation, 'green')
 
 		json_string = get_missing_segregation_status_bicycle_ways_as_json(overpass_bb)
-		sidebar_explanation = " - asfaltowych chodników z dopuszczonym ruchem rowerowym (zarówno tam gdzie rowerzysta jest zmuszony z ich skorzystać jeśli są w jego \"kierunku jazdy\" jak i te gdzie korzystanie jest dobrowolne)"
+		sidebar_explanation = " - brak segregated=yes/no"
 		page_title = "bicycle_ways_missing_segregated_info.html"
 		generate_page_about_ways(json_string, page_title, sidebar_explanation, 'purple')
 	end

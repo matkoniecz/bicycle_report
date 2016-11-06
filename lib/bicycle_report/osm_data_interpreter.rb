@@ -223,12 +223,11 @@ def get_nonseparated_bicycle_ways_as_json(bb, surface, additional_filters="")
 end
 
 def get_missing_segregation_status_bicycle_ways_as_json(bb)
-	filters = 'way[highway=cycleway][foot=yes][segregated!=no][segregated!=yes]' + '(' + bb + ');'
-	['cycleway', 'path', 'footway', 'pedestrian', 'bridleway'].each {|highway|
-		['designated', 'yes'].each {|bicycle|
-			['surface', '"cycleway:surface"'].each { |surface_tag|
-				filters += "\n  way[highway=#{highway}][bicycle=#{bicycle}][segregated!=no][segregated!=yes](#{bb});"
-			}
+	filters = '  way[highway=cycleway][foot=yes][segregated!=no][segregated!=yes]' + '(' + bb + ');'
+	filters += "\n  way[highway=cycleway][foot=designated][segregated!=no][segregated!=yes]" + '(' + bb + ');'
+	['path', 'footway', 'pedestrian', 'bridleway'].each {|highway|
+		['designated'].each {|bicycle|
+			filters += "\n  way[highway=#{highway}][bicycle=#{bicycle}][segregated!=no][segregated!=yes][cycleway!=lane](#{bb});"
 		}
 	}
 	return get_standard_json_query_results(filters)
