@@ -93,9 +93,6 @@ class BicycleParkingRaportGenerator < ReportGenerator
 		}
 
 		open(osm_state_page, 'a') {|file|
-			file.puts section("osm_data_quality_completness_title", "h2")
-			file.puts I18n.t("osm_data_quality_completness")
-			file.puts get_progress_bar_for_missing_data
 			file.puts section("bicycle_parking_capacity_title", "h2")
 			file.puts I18n.t("bicycle_parking_capacity_tagging_progress")
 			file.puts get_progress_bar(elements*100/(elements+elements_missing_capacity))

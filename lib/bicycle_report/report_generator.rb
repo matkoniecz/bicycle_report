@@ -80,6 +80,12 @@ class ReportGenerator
 		}
 
 		start_writing_page(osm_state_page, "osm_state_summary_title")
+
+		open(osm_state_page, 'a') {|file|
+			file.puts section("osm_data_quality_completness_title", "h2")
+			file.puts I18n.t("osm_data_quality_completness")
+			file.puts get_progress_bar_for_missing_data
+		}
 	end
 
 	def finish_writing_summary_pages
