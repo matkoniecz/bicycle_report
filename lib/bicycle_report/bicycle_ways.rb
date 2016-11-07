@@ -41,19 +41,31 @@ class BicycleWayRaportGenerator < ReportGenerator
 		}
 	end
 
+	def get_bar_about_contraflow_progress(existing_contraflow_in_m, missing_contraflow_in_m)
+		percent_done = (100 * existing_contraflow_in_m / (existing_contraflow_in_m + missing_contraflow_in_m)).to_i
+
+		text = section("contraflow_progress_short", "h3")
+		text += I18n.t("contraflow_progress")
+		text += get_progress_bar(percent_done)
+
+		return text
+	end
+
+	def get_listing_of_contraflow_status(name, length, subpage)
+		text = ""
+		text += "<div class=\"shadowed_box\"><h1>"
+		text += distance_in_m_to_text(length)
+		text += "</h1>"
+		text += I18n.t(name, length)
+		text += '<a href="./' + subpage + '">' + I18n.t("more_including_map") + '</a>'
+		text += "</div>"
+	end
+
 	def add_section_on_main_page_about_contraflow(filename_of_page_with_detailed_data, missing_contraflow_in_m, existing_contraflow_in_m)
 		open(main_page, 'a') {|file|
 			file.puts section("contraflow_title", "h2")
-			file.puts "<div class=\"shadowed_box\"><h1>"
-			file.puts distance_in_m_to_text(existing_contraflow_in_m)
-			file.puts "</h1>"
-			file.puts I18n.t("contraflow_existing_length")
-			file.puts "</div>"
-			file.puts section("contraflow_progress_short", "h3")
-			file.puts I18n.t("contraflow_progress")
-			percent_done = (100 * existing_contraflow_in_m / (existing_contraflow_in_m + missing_contraflow_in_m)).to_i
-			file.puts get_progress_bar(percent_done)
-			file.puts '<a href="./' + filename_of_page_with_detailed_data + '">' + I18n.t("more_including_map") + '</a>'
+			file.puts get_listing_of_contraflow_status('contraflow_existing_length', existing_contraflow_in_m, filename_of_page_with_detailed_data)
+			file.puts get_bar_about_contraflow_progress(existing_contraflow_in_m, missing_contraflow_in_m)
 		}
 	end
 
@@ -62,31 +74,13 @@ class BicycleWayRaportGenerator < ReportGenerator
 		open(filename, 'a') {|file|
 			file.puts section("contraflow_title", "h2")
 
-			file.puts "<div class=\"shadowed_box\"><h1>"
-			file.puts distance_in_m_to_text(missing_contraflow_in_m)
-			file.puts "</h1>"
-			file.puts I18n.t("contraflow_missing_length")
-			file.puts "</div>"
-
-			file.puts "<div class=\"shadowed_box\"><h1>"
-			file.puts distance_in_m_to_text(existing_contraflow_in_m)
-			file.puts "</h1>"
-			file.puts I18n.t("contraflow_existing_length")
-			file.puts "</div>"
-
-			file.puts "<div class=\"shadowed_box\"><h1>"
-			file.puts distance_in_m_to_text(unwanted_contraflow_in_m)
-			file.puts "</h1>"
-			file.puts I18n.t("unwanted_contraflow_length")
-			file.puts "</div>"
+			file.puts get_bar_about_contraflow_progress(existing_contraflow_in_m, missing_contraflow_in_m)
+			file.puts get_listing_of_contraflow_status('contraflow_missing_length', missing_contraflow_in_m, 'bicycle_ways_missing_contraflow.html')
+			file.puts get_listing_of_contraflow_status('contraflow_existing_length', existing_contraflow_in_m, 'bicycle_ways_existing_contraflow.html')
+			file.puts get_listing_of_contraflow_status('contraflow_unwanted_length', unwanted_contraflow_in_m, 'bicycle_ways_unwanted_contraflow.html')
 
 			file.puts I18n.t("contraflow_explanation")
-			file.puts I18n.t("contraflow_progress")
-			percent_done = (100 * existing_contraflow_in_m / (existing_contraflow_in_m + missing_contraflow_in_m)).to_i
-			file.puts get_progress_bar(percent_done)
-			file.puts '<a href="./' + "bicycle_ways_missing_contraflow.html" + '">' + I18n.t("more_including_map") + '</a>'
-			file.puts '<a href="./' + "bicycle_ways_existing_contraflow.html" + '">' + I18n.t("more_including_map") + '</a>'
-			file.puts '<a href="./' + "bicycle_ways_unwanted_contraflow.html" + '">' + I18n.t("more_including_map") + '</a>'
+
 			file.puts '<a href="./' + "bicycle_ways_dual_carriageway.html" + '">' + I18n.t("more_including_map") + '</a>'
 		}
 		finish_writing_page(filename)
@@ -98,26 +92,26 @@ class BicycleWayRaportGenerator < ReportGenerator
 		missing_contraflow_in_m, _ = compute_full_length_and_leafletify_lines(ways, 'color')
 		sidebar_explanation = " - #{I18n.t('contraflow_missing_title')}<br><br>#{I18n.t('contraflow_missing')}"
 		page_filename = "bicycle_ways_missing_contraflow.html"
-		generate_page_about_ways(json_string, I18n.t('missing_contraflow_title'), page_filename, sidebar_explanation, 'red')
+		generate_page_about_ways(json_string, I18n.t('contraflow_missing_title'), page_filename, sidebar_explanation, 'red')
 
 		json_string = existing_contraflow_as_json(overpass_bb)
 		ways = Overhelper.convert_to_ways(json_string)
 		existing_contraflow_in_m, _ = compute_full_length_and_leafletify_lines(ways, 'color')
 		sidebar_explanation = " - #{I18n.t('contraflow_existing_title')}<br><br>#{I18n.t('contraflow_existing')}"
 		page_filename = "bicycle_ways_existing_contraflow.html"
-		generate_page_about_ways(json_string, I18n.t('existing_contraflow_title'), page_filename, sidebar_explanation, 'green')
+		generate_page_about_ways(json_string, I18n.t('contraflow_existing_title'), page_filename, sidebar_explanation, 'green')
 
 		json_string = unwanted_contraflow_as_json(overpass_bb, contraflow_unwanted_by_names)
 		ways = Overhelper.convert_to_ways(json_string)
 		unwanted_contraflow_in_m, _ = compute_full_length_and_leafletify_lines(ways, 'color')
 		sidebar_explanation = " - #{I18n.t('contraflow_unwanted_title')}<br><br>#{I18n.t('contraflow_unwanted')}"
 		page_filename = "bicycle_ways_unwanted_contraflow.html"
-		generate_page_about_ways(json_string, I18n.t('unwanted_contraflow_title'), page_filename, sidebar_explanation, 'purple')
+		generate_page_about_ways(json_string, I18n.t('contraflow_unwanted_title'), page_filename, sidebar_explanation, 'purple')
 
 		json_string = dual_carriageway_as_json(overpass_bb, contraflow_unwanted_by_names)
-		sidebar_explanation = " - #{I18n.t('dual_carriageway_title')}<br><br>#{I18n.t('dual_carriageway')}"
+		sidebar_explanation = " - #{I18n.t('contraflow_debug_dual_carriageway_title')}<br><br>#{I18n.t('contraflow_debug_dual_carriageway')}"
 		page_filename = "bicycle_ways_dual_carriageway.html"
-		generate_page_about_ways(json_string, I18n.t('dual_carriageway_title'), page_filename, sidebar_explanation, 'purple')
+		generate_page_about_ways(json_string, I18n.t('contraflow_debug_dual_carriageway_title'), page_filename, sidebar_explanation, 'purple')
 
 		filename_of_page_with_detailed_data = 'contraflow.html'
 		generate_general_contraflow_page(filename_of_page_with_detailed_data, existing_contraflow_in_m, missing_contraflow_in_m, unwanted_contraflow_in_m)
