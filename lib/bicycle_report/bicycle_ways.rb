@@ -21,10 +21,11 @@ class BicycleWayRaportGenerator < ReportGenerator
 	end
 
 	def distance_in_m_to_text(distance_in_m)
-		if distance_in_m < 4000
-			return "#{distance_in_m.to_i} m"
+		distance_in_km = distance_in_m/1000.0
+		if distance_in_km < 4
+			return "#{'%.1f' % distance_in_km} km"
 		end
-		return "#{distance_in_m.to_i/1000} km"
+		return "#{'%.0f' % distance_in_km} km"
 	end
 
 	def generate_page_about_ways(json_string, page_filename, sidebar_explanation, color)
