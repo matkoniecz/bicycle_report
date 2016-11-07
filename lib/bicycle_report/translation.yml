@@ -14,9 +14,9 @@ pl:
 
   bicycle_parking_title: "Parkingi rowerowe"
   bicycle_parking_quality: "Stan parkingów rowerowych"
-  good_available_bicycle_parking_count: "Liczba publicznie dostępnych dobrze przygotowanych miejsc parkingowych dla rowerów. W szczególnośc wyrwikółki nie są liczone jako sensowne stojaki."
+  good_available_bicycle_parking_count: "Liczba publicznie dostępnych dobrze przygotowanych miejsc parkingowych dla rowerów. W szczególności wyrwikółki nie są liczone jako sensowne stojaki."
   wall_loop_title: "Postęp eliminacji wyrwikółek" 
-  about_wall_loop: "Wyrwikółki, stojaki w których prawidłowe (za ramę) przypięcie roweru nie jest proste. Niestety takie stojaki nie są wartościowe. Te dane pokazują jaki udział wśród stojaków rowerowych mają te dobrej jakości. 100% oznaczałoby kompletny zanik wyrwikółek."
+  about_wall_loop: "Wyrwikółki, stojaki w których skuteczne przypięcie roweru (za ramę) nie jest proste. Niestety takie stojaki nie są wartościowe i powinny zostać wymienione na te prawidłowe. Ten wskaźnik pokazuje jaka część miejsc parkingowych dla rowerów jest wykonana prawidłowo. 0% oznacza brak jakichkolwiek prawidłowych stojaków, 100% oznacza całkowite usunięcie wyrwikółek."
   wall_loops_remaining: "Tyle wyrwikółek nadal udaje parkingi rowerowe:"
   bicycle_parking_capacity_title: "Pojemność"
   bicycle_parking_capacity_tagging_progress: "Postęp zbierania informacji o pojemności już zaznaczonych parkingów rowerowych"
