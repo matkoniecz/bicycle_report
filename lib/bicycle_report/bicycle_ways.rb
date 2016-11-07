@@ -45,9 +45,9 @@ class BicycleWayRaportGenerator < ReportGenerator
 		open(main_page, 'a') {|file|
 			file.puts section("contraflow_title", "h2")
 			file.puts "<div class=\"shadowed_box\"><h1>"
-			file.puts distance_in_m_to_text(missing_contraflow_in_m)
+			file.puts distance_in_m_to_text(existing_contraflow_in_m)
 			file.puts "</h1>"
-			file.puts I18n.t("contraflow_missing_length")
+			file.puts I18n.t("contraflow_existing_length")
 			file.puts "</div>"
 			file.puts section("contraflow_progress_short", "h3")
 			file.puts I18n.t("contraflow_progress")
