@@ -58,7 +58,8 @@ class BicycleWayRaportGenerator < ReportGenerator
 	end
 
 	def generate_general_contraflow_page(filename, existing_contraflow_in_m, missing_contraflow_in_m, unwanted_contraflow_in_m)
-		open(filename, 'w') {|file|
+		start_writing_page(filename, 'contraflow_title')
+		open(filename, 'a') {|file|
 			file.puts section("contraflow_title", "h2")
 
 			file.puts "<div class=\"shadowed_box\"><h1>"
@@ -88,6 +89,7 @@ class BicycleWayRaportGenerator < ReportGenerator
 			file.puts '<a href="./' + "bicycle_ways_unwanted_contraflow.html" + '">' + I18n.t("more_including_map") + '</a>'
 			file.puts '<a href="./' + "bicycle_ways_dual_carriageway.html" + '">' + I18n.t("more_including_map") + '</a>'
 		}
+		finish_writing_page(filename)
 	end
 
 	def contraflow(contraflow_exceptions_by_names, contraflow_unwanted_by_names)
