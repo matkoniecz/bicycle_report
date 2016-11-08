@@ -94,26 +94,26 @@ class BicycleWayRaportGenerator < ReportGenerator
 		json_string = get_missing_contraflow_as_json(overpass_bb, contraflow_exceptions_by_names)
 		ways = Overhelper.convert_to_ways(json_string)
 		missing_contraflow_in_m, _ = compute_full_length_and_leafletify_lines(ways, 'color')
-		sidebar_explanation = " - #{I18n.t('missing_contraflow_title')}<br><br>#{I18n.t('missing_contraflow').gsub("\n", '<br>')}"
+		sidebar_explanation = " - #{I18n.t('contraflow_missing_title')}<br><br>#{I18n.t('contraflow_missing')}"
 		page_filename = "bicycle_ways_missing_contraflow.html"
 		generate_page_about_ways(json_string, I18n.t('missing_contraflow_title'), page_filename, sidebar_explanation, 'red')
 
 		json_string = existing_contraflow_as_json(overpass_bb)
 		ways = Overhelper.convert_to_ways(json_string)
 		existing_contraflow_in_m, _ = compute_full_length_and_leafletify_lines(ways, 'color')
-		sidebar_explanation = " - #{I18n.t('existing_contraflow_title')}<br><br>#{I18n.t('existing_contraflow').gsub("\n", '<br>')}"
+		sidebar_explanation = " - #{I18n.t('contraflow_existing_title')}<br><br>#{I18n.t('contraflow_existing')}"
 		page_filename = "bicycle_ways_existing_contraflow.html"
 		generate_page_about_ways(json_string, I18n.t('existing_contraflow_title'), page_filename, sidebar_explanation, 'green')
 
 		json_string = unwanted_contraflow_as_json(overpass_bb, contraflow_unwanted_by_names)
 		ways = Overhelper.convert_to_ways(json_string)
 		unwanted_contraflow_in_m, _ = compute_full_length_and_leafletify_lines(ways, 'color')
-		sidebar_explanation = " - #{I18n.t('unwanted_contraflow_title')}<br><br>#{I18n.t('unwanted_contraflow').gsub("\n", '<br>')}"
+		sidebar_explanation = " - #{I18n.t('contraflow_unwanted_title')}<br><br>#{I18n.t('contraflow_unwanted')}"
 		page_filename = "bicycle_ways_unwanted_contraflow.html"
 		generate_page_about_ways(json_string, I18n.t('unwanted_contraflow_title'), page_filename, sidebar_explanation, 'purple')
 
 		json_string = dual_carriageway_as_json(overpass_bb, contraflow_unwanted_by_names)
-		sidebar_explanation = " - #{I18n.t('dual_carriageway_title')}<br><br>#{I18n.t('dual_carriageway').gsub("\n", '<br>')}"
+		sidebar_explanation = " - #{I18n.t('dual_carriageway_title')}<br><br>#{I18n.t('dual_carriageway')}"
 		page_filename = "bicycle_ways_dual_carriageway.html"
 		generate_page_about_ways(json_string, I18n.t('dual_carriageway_title'), page_filename, sidebar_explanation, 'purple')
 
