@@ -135,6 +135,11 @@ class BicycleWayRaportGenerator < ReportGenerator
 		sidebar_explanation = " - asfaltowych chodników z dopuszczonym ruchem rowerowym tam gdzie rowerzysta może ale nie musi z ich korzystać"
 		generate_page_about_ways(json_string, 'cycling_infrastructure_shared_use_optional', 'green')
 
+
+		json_string = get_bad_obligatory_bicycle_ways_as_json(overpass_bb)
+		sidebar_explanation = " - Trasy rowerowe o fatalnej jakości gdzie rowerzysta jest zmuszony z ich skorzystać jeśli są w jego \"kierunku jazdy\")"
+		generate_page_about_ways(json_string, 'cycling_infrastructure_bad_and_obligatory', 'green')
+
 		json_string = get_missing_segregation_status_bicycle_ways_as_json(overpass_bb)
 		sidebar_explanation = " - brak segregated=yes/no"
 		generate_page_about_ways(json_string, 'cycling_infrastructure_debug_missing_segregated_key', 'green')

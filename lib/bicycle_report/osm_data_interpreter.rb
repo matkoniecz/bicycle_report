@@ -220,6 +220,25 @@ def get_nonseparated_bicycle_ways_as_json(bb, surface, additional_filters="")
 	return get_standard_json_query_results(filters)
 end
 
+def get_bad_obligatory_bicycle_ways_as_json(bb)
+	query = 'way["smoothness"="bad"]["highway"="cycleway"]({{bbox}});
+	way["smoothness"="bad"]["bicycle"="designated"]({{bbox}});
+	way["smoothness"="very_bad"]["highway"="cycleway"]({{bbox}});
+	way["smoothness"="very_bad"]["bicycle"="designated"]({{bbox}});
+	way["smoothness"="horrible"]["highway"="cycleway"]({{bbox}});
+	way["smoothness"="horrible"]["bicycle"="designated"]({{bbox}});
+	way["smoothness"="very_horrible"]["highway"="cycleway"]({{bbox}});
+	way["smoothness"="very_horrible"]["bicycle"="designated"]({{bbox}});
+	way["smoothness"="impassable"]["highway"="cycleway"]({{bbox}});
+	way["smoothness"="impassable"]["bicycle"="designated"]({{bbox}});
+	way["smoothness"!="excellent"]["surface"!="asphalt"]["surface"]["cycleway:surface"!="asphalt"]["highway"="cycleway"]({{bbox}});
+	way["smoothness"!="excellent"]["surface"!="asphalt"]["surface"]["cycleway:surface"!="asphalt"]["bicycle"="designated"]({{bbox}});
+	way["smoothness"!="excellent"]["cycleway:surface"]["cycleway:surface"!="asphalt"]["highway"="cycleway"]({{bbox}});
+	way["smoothness"!="excellent"]["cycleway:surface"]["cycleway:surface"!="asphalt"]["bicycle"="designated"]({{bbox}});'
+	query = query.gsub('({{bbox}})', "(#{bb})")
+	return get_standard_json_query_results(filters)
+end
+
 def get_missing_segregation_status_bicycle_ways_as_json(bb)
 	filters = '  way[highway=cycleway][foot=yes][segregated!=no][segregated!=yes]' + '(' + bb + ');'
 	filters += "\n  way[highway=cycleway][foot=designated][segregated!=no][segregated!=yes]" + '(' + bb + ');'
