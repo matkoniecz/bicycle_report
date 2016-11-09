@@ -121,28 +121,60 @@ class BicycleWayRaportGenerator < ReportGenerator
 		contraflow_generate_general_pages()
 	end
 
+	def get_box_with_way_summary_simplified(translation_code, length_in_m)
+		get_box_with_way_summary(translation_code+'_length', length_in_m, I18n.t(translation_code + '_title') + '.html')
+	end
+
 	def other_cycling_infrastructure() #TODO - better name needed
-		json_string = get_separated_bicycle_ways_as_json(overpass_bb, "asphalt")
+		cycleway_json_string = get_separated_bicycle_ways_as_json(overpass_bb, "asphalt")
 		sidebar_explanation = " - #{I18n.t('cycling_infrastructure_cycleway')}<br><br>#{I18n.t('cycling_infrastructure_cycleway')}"
-		sidebar_explanation = " - asfaltowych dróg dla rowerów i ulic z pasem dla rowerów w obu kierunkach (kontrapasy nie są wliczane)"
-		generate_page_about_ways(json_string, 'cycling_infrastructure_cycleway', 'green')
+		generate_page_about_ways(cycleway_json_string, 'cycling_infrastructure_cycleway', 'green')
 
-		json_string = get_nonseparated_bicycle_ways_as_json(overpass_bb, "asphalt", "[bicycle=designated]")
-		sidebar_explanation = " - asfaltowych chodników z dopuszczonym ruchem rowerowym tam gdzie rowerzysta jest zmuszony z ich skorzystać jeśli są w jego \"kierunku jazdy\")"
-		generate_page_about_ways(json_string, 'cycling_infrastructure_shared_use_obligatory', 'green')
+		cycling_infrastructure_shared_use_optional_json_string = get_nonseparated_bicycle_ways_as_json(overpass_bb, "asphalt", "[bicycle=yes]")
+		generate_page_about_ways(cycling_infrastructure_shared_use_optional_json_string, 'cycling_infrastructure_shared_use_optional', 'green')
 
-		json_string = get_nonseparated_bicycle_ways_as_json(overpass_bb, "asphalt", "[bicycle=yes]")
-		sidebar_explanation = " - asfaltowych chodników z dopuszczonym ruchem rowerowym tam gdzie rowerzysta może ale nie musi z ich korzystać"
-		generate_page_about_ways(json_string, 'cycling_infrastructure_shared_use_optional', 'green')
+		infrastructure_shared_use_obligatory_json_string = get_nonseparated_bicycle_ways_as_json(overpass_bb, "asphalt", "[bicycle=designated]")
+		generate_page_about_ways(infrastructure_shared_use_obligatory_json_string, 'cycling_infrastructure_shared_use_obligatory', 'orange')
 
-
-		json_string = get_bad_obligatory_bicycle_ways_as_json(overpass_bb)
-		sidebar_explanation = " - Trasy rowerowe o fatalnej jakości gdzie rowerzysta jest zmuszony z ich skorzystać jeśli są w jego \"kierunku jazdy\")"
-		generate_page_about_ways(json_string, 'cycling_infrastructure_bad_and_obligatory', 'green')
+		bad_obligatory_bicycle_ways_json_string = get_bad_obligatory_bicycle_ways_as_json(overpass_bb)
+		generate_page_about_ways(bad_obligatory_bicycle_ways_json_string, 'cycling_infrastructure_bad_and_obligatory', 'red')
 
 		json_string = get_missing_segregation_status_bicycle_ways_as_json(overpass_bb)
-		sidebar_explanation = " - brak segregated=yes/no"
-		generate_page_about_ways(json_string, 'cycling_infrastructure_debug_missing_segregated_key', 'green')
+		generate_page_about_ways(json_string, 'cycling_infrastructure_debug_missing_segregated_key', 'red')
+
+		filename_of_page_with_detailed_data = I18n.t('cycling_infrastructure_title')+'.html'
+
+		open(main_page, 'a') {|file|
+			file.puts section("cycling_infrastructure_cycleway", "h2")
+			ways = Overhelper.convert_to_ways(cycleway_json_string)
+			length_in_m, _ = compute_full_length_and_leafletify_lines(ways, 'color')
+			file.puts get_box_with_way_summary('cycling_infrastructure_cycleway_length', length_in_m, filename_of_page_with_detailed_data)
+		}
+
+		start_writing_page(filename_of_page_with_detailed_data, 'cycling_infrastructure_title')
+		open(filename_of_page_with_detailed_data, 'a') {|file|
+			file.puts section("cycling_infrastructure_cycleway_title", "h2")
+
+			ways = Overhelper.convert_to_ways(cycleway_json_string)
+			length_in_m, _ = compute_full_length_and_leafletify_lines(ways, 'color')
+			file.puts get_box_with_way_summary_simplified('cycling_infrastructure_cycleway', length_in_m)
+
+			ways = Overhelper.convert_to_ways(cycling_infrastructure_shared_use_optional_json_string)
+			length_in_m, _ = compute_full_length_and_leafletify_lines(ways, 'color')
+			file.puts get_box_with_way_summary_simplified('cycling_infrastructure_shared_use_optional', length_in_m)
+
+			ways = Overhelper.convert_to_ways(infrastructure_shared_use_obligatory_json_string)
+			length_in_m, _ = compute_full_length_and_leafletify_lines(ways, 'color')
+			file.puts get_box_with_way_summary_simplified('cycling_infrastructure_shared_use_obligatory', length_in_m)\
+
+			ways = Overhelper.convert_to_ways(bad_obligatory_bicycle_ways_json_string)
+			length_in_m, _ = compute_full_length_and_leafletify_lines(ways, 'color')
+			file.puts get_box_with_way_summary_simplified('cycling_infrastructure_bad_and_obligatory', length_in_m)
+
+			file.puts I18n.t("cycling_infrastructure_explanation")
+		}
+		finish_writing_page(filename_of_page_with_detailed_data)
+
 	end
 
 	def process(names_of_streets_certain_to_not_be_oneway, names_of_streets_where_contraflow_is_unwanted)

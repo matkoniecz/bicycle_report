@@ -48,6 +48,33 @@ pl:
     Pozytywnym przykładem jest Radom gdzie nie ma dróg jednokierunkowych dla rowerów - http://www.transport-publiczny.pl/wiadomosci/radom-rowerem-pod-prad-52-ulice-z-kontraruchem-3192.html
     
     Przykładem iż jest u nas całkiem dobrze jest Warszawa gdzie temat kontrapasów jest w lesie - http://www.zm.org.pl/?a=rowerowy_skok_cywilizacyjny-4.
+  cycling_infrastructure_title: Przegląd tras rowerowych
+  cycling_infrastructure_explanation: Dobrze wykonana infrastruktura rowerów wykorzystuje różnorodne rozwiązania, dpasowane do sytuacji. Jednak pewne rozwiązania da się jednoznacznie i dość prosto ocenić.
+  cycling_infrastructure_cycleway_length: pasów rowerowych i afaltowych dróg dla rowerów.
+  cycling_infrastructure_cycleway_title: Infrastruktura rowerowa spełniająca minimalne wymagania.
+  cycling_infrastructure_cycleway: Poprzeczka jest tu ustawiona bardzo nisko - liczone są nie tylko pasy rowerowe oraz dobrze wykonane dorgi dla rowerów. Są tu też zaliczone wszystkie przypadki gdzie droga dla rowerów ma nawierzchnię asfaltową.
+
+    Ze względu na dopiero raczkującą infrastrukture rowerową uwzględnioną również nawierzchnię asfaltową która jest na tyle zniszczona iż wymaga już remontu.
+    
+    Kotrapasy nie są wliczane do długości pasów rowerowych.
+  cycling_infrastructure_shared_use_optional_length: asfaltowych chodników gdzie można jeździć rowerem, piesi mają na nich pierwszeństwo
+  cycling_infrastructure_shared_use_optional_title: Asfaltowe chodniki z których mogą korzystać rowerzyści
+  cycling_infrastructure_shared_use_optional: W niektórych przypadkach rowerzyści mogą jeździć chodnikami. Jeśli nie są do tego zmuszeni, może być to w niektórych przypadkach dobra infrastruktura rowerowa.
+  cycling_infrastructure_shared_use_obligatory_length: asfaltowych chodników gdzie rowerzysta jest zmuszony z ich skorzystać jeśli są w jego "kierunku jazdy", piesi mają na nich pierwszeństwo
+  cycling_infrastructure_shared_use_obligatory_title: Asfaltowe chodniki z których muszą* korzystać rowerzyści
+  cycling_infrastructure_shared_use_obligatory: |
+    Niestety, w wielu przypadkach budowane są nie wydzielone drogi dla rowerów a asfaltowe chodniki z których rowerzyści muszą* korzystać. Takie twory nazywane są ciągami pieszo-rowerowymi. W niektórych przypadkach, zwłaszcza przy dużych drogach lub przy minimalnym ruchu pieszym ogólny wpływ jest pozytywny. Jednak dla części rowerzystów którzy nie boją się jeździć drogami stanowią często spore utrudnienie - czasame zamiast jazdy drogą rowerzyści są zmuszeni do lawirowania pomiędzy pieszymi.
+
+    (*) Zgodnie z artykułem 33 Kodeksu Drogowego rowerzysta ma obowiązek korzystać z drogi dla rowerów jeżeli jest ona wyznaczona dla kierunku w którym się porusza. W wielu przypadkach nie jest jasne jak należy ten przepis stosować. Np. czy jadąc tak iż ma się drogę dla rowerów po lewej stronie - czy jest obowiązek korzystania z niej? Co jeśli w danym momencie po prawej stronie drogi jest droga dla rowerów ale uniemożliwia jazdy tam gdzie chce jechać rowerzysta? Co jeśli jest droga dla rowerów ale za chwile się skończy, bez możliwości zjechania na drogę?
+  cycling_infrastructure_bad_and_obligatory_length: o fatalnej jakości gdzie rowerzysta jest zmuszony z ich skorzystać jeśli są w jego "kierunku jazdy"
+  cycling_infrastructure_bad_and_obligatory_title: śmieszki rowerowe do natychmiastowego remontu, w tym momencie nie zasługują na nazywanie ich drogami rowerowymi
+  cycling_infrastructure_bad_and_obligatory: |
+    W wielu przypadkach rowerzysta jest zmuszony* korzystać z tras rowerowych o fatalnej jakości, uniemożliwiającej bezpieczną i  wygodną jazdę. 
+
+    (*) Zgodnie z artykułem 33 Kodeksu Drogowego rowerzysta ma obowiązek korzystać z drogi dla rowerów jeżeli jest ona wyznaczona dla kierunku w którym się porusza. W wielu przypadkach nie jest jasne jak należy ten przepis stosować. Np. czy jadąc tak iż ma się drogę dla rowerów po lewej stronie - czy jest obowiązek korzystania z niej? Co jeśli w danym momencie po prawej stronie drogi jest droga dla rowerów ale uniemożliwia jazdy tam gdzie chce jechać rowerzysta? Co jeśli jest droga dla rowerów ale za chwile się skończy, bez możliwości zjechania na drogę?
+  cycling_infrastructure_debug_missing_segregated_key_length: tras rowerowych z brakującym segregated=yes/no
+  cycling_infrastructure_debug_missing_segregated_key_title: Trasy rowerowe z brakującym segregated=yes/no
+  cycling_infrastructure_debug_missing_segregated_key: "uwaga - być może prawdziwy błąd polega na czymś innymi! Wizyta w terenie przed wykonaniem edycji jest niezbędna!"
   bicycle_parking_title: "Parkingi rowerowe"
   bicycle_parking_quality: "Stan parkingów rowerowych"
   good_available_bicycle_parking_count: "Liczba publicznie dostępnych dobrze przygotowanych miejsc parkingowych dla rowerów. W szczególności wyrwikółki nie są liczone jako sensowne stojaki."

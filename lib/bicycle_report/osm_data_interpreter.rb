@@ -221,7 +221,7 @@ def get_nonseparated_bicycle_ways_as_json(bb, surface, additional_filters="")
 end
 
 def get_bad_obligatory_bicycle_ways_as_json(bb)
-	query = 'way["smoothness"="bad"]["highway"="cycleway"]({{bbox}});
+	filters = 'way["smoothness"="bad"]["highway"="cycleway"]({{bbox}});
 	way["smoothness"="bad"]["bicycle"="designated"]({{bbox}});
 	way["smoothness"="very_bad"]["highway"="cycleway"]({{bbox}});
 	way["smoothness"="very_bad"]["bicycle"="designated"]({{bbox}});
@@ -235,7 +235,7 @@ def get_bad_obligatory_bicycle_ways_as_json(bb)
 	way["smoothness"!="excellent"]["surface"!="asphalt"]["surface"]["cycleway:surface"!="asphalt"]["bicycle"="designated"]({{bbox}});
 	way["smoothness"!="excellent"]["cycleway:surface"]["cycleway:surface"!="asphalt"]["highway"="cycleway"]({{bbox}});
 	way["smoothness"!="excellent"]["cycleway:surface"]["cycleway:surface"!="asphalt"]["bicycle"="designated"]({{bbox}});'
-	query = query.gsub('({{bbox}})', "(#{bb})")
+	filters = filters.gsub('({{bbox}})', "(#{bb})")
 	return get_standard_json_query_results(filters)
 end
 
