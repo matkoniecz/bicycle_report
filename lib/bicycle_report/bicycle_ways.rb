@@ -56,7 +56,7 @@ class BicycleWayRaportGenerator < ReportGenerator
 		text += "<div class=\"shadowed_box\"><h1>"
 		text += distance_in_m_to_text(length)
 		text += "</h1>"
-		text += I18n.t(name, length)
+		text += I18n.t(name)
 		text += '<a href="./' + subpage + '">' + I18n.t("more_including_map") + '</a>'
 		text += "</div>"
 	end
