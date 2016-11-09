@@ -51,20 +51,20 @@ class BicycleWayRaportGenerator < ReportGenerator
 		return text
 	end
 
-	def get_listing_of_contraflow_status(name, length, subpage)
+	def get_box_with_way_summary(description_translation_code, length_in_m, subpage_filename)
 		text = ""
 		text += "<div class=\"shadowed_box\"><h1>"
-		text += distance_in_m_to_text(length)
+		text += distance_in_m_to_text(length_in_m)
 		text += "</h1>"
-		text += I18n.t(name)
-		text += '<a href="./' + subpage + '">' + I18n.t("more_including_map") + '</a>'
+		text += I18n.t(description_translation_code)
+		text += '<a href="./' + subpage_filename + '">' + I18n.t("more_including_map") + '</a>'
 		text += "</div>"
 	end
 
 	def add_section_on_main_page_about_contraflow(filename_of_page_with_detailed_data, missing_contraflow_in_m, existing_contraflow_in_m)
 		open(main_page, 'a') {|file|
 			file.puts section("contraflow_title", "h2")
-			file.puts get_listing_of_contraflow_status('contraflow_existing_length', existing_contraflow_in_m, filename_of_page_with_detailed_data)
+			file.puts get_box_with_way_summary('contraflow_existing_length', existing_contraflow_in_m, filename_of_page_with_detailed_data)
 			file.puts get_bar_about_contraflow_progress(existing_contraflow_in_m, missing_contraflow_in_m)
 		}
 	end
@@ -75,9 +75,9 @@ class BicycleWayRaportGenerator < ReportGenerator
 			file.puts section("contraflow_title", "h2")
 
 			file.puts get_bar_about_contraflow_progress(existing_contraflow_in_m, missing_contraflow_in_m)
-			file.puts get_listing_of_contraflow_status('contraflow_missing_length', missing_contraflow_in_m, 'bicycle_ways_missing_contraflow.html')
-			file.puts get_listing_of_contraflow_status('contraflow_existing_length', existing_contraflow_in_m, 'bicycle_ways_existing_contraflow.html')
-			file.puts get_listing_of_contraflow_status('contraflow_unwanted_length', unwanted_contraflow_in_m, 'bicycle_ways_unwanted_contraflow.html')
+			file.puts get_box_with_way_summary('contraflow_missing_length', missing_contraflow_in_m, 'bicycle_ways_missing_contraflow.html')
+			file.puts get_box_with_way_summary('contraflow_existing_length', existing_contraflow_in_m, 'bicycle_ways_existing_contraflow.html')
+			file.puts get_box_with_way_summary('contraflow_unwanted_length', unwanted_contraflow_in_m, 'bicycle_ways_unwanted_contraflow.html')
 
 			file.puts I18n.t("contraflow_explanation")
 
