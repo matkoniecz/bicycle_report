@@ -74,7 +74,7 @@ class BicycleWayRaportGenerator < ReportGenerator
 		text += distance_in_m_to_text(length_in_m)
 		text += "</h1>"
 		text += I18n.t(description_translation_code)
-		text += '<a href="./' + subpage_filename + '">' + I18n.t("more_including_map") + '</a>'
+		text += '<a href="./' + subpage_filename + '">' + '<br>' + I18n.t("more_including_map") + '</a>'
 		text += "</div>"
 	end
 
