@@ -82,8 +82,6 @@ class BicycleWayRaportGenerator < ReportGenerator
 			file.puts get_box_with_way_summary('contraflow_unwanted_length', @unwanted_contraflow_in_m, I18n.t('contraflow_unwanted' + '_title') + '.html')
 
 			file.puts I18n.t("contraflow_explanation")
-
-			file.puts '<a href="./' + "bicycle_ways_dual_carriageway.html" + '">' + I18n.t("more_including_map") + '</a>'
 		}
 		finish_writing_page(filename)
 	end
