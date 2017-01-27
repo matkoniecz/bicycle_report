@@ -77,7 +77,7 @@ pl:
   cycling_infrastructure_debug_missing_segregated_key: "uwaga - być może prawdziwy błąd polega na czymś innymi! Wizyta w terenie przed wykonaniem edycji jest niezbędna!"
   bicycle_parking_title: "Parkingi rowerowe"
   bicycle_parking_quality: "Stan parkingów rowerowych"
-  good_available_bicycle_parking_count: "Liczba publicznie dostępnych dobrze przygotowanych miejsc parkingowych dla rowerów. W szczególności wyrwikółki nie są liczone jako sensowne stojaki."
+  bicycle_parking_real_parking_count_description: "Liczba publicznie dostępnych dobrze przygotowanych miejsc parkingowych dla rowerów. W szczególności wyrwikółki nie są liczone jako sensowne stojaki."
   wall_loop_title: "Postęp eliminacji wyrwikółek" 
   about_wall_loop: "Wyrwikółki, stojaki w których skuteczne przypięcie roweru (za ramę) nie jest proste. Niestety takie stojaki nie są wartościowe i powinny zostać wymienione na te prawidłowe. Ten wskaźnik pokazuje jaka część miejsc parkingowych dla rowerów jest wykonana prawidłowo. 0% oznacza brak jakichkolwiek prawidłowych stojaków, 100% oznacza całkowite usunięcie wyrwikółek."
   wall_loops_remaining: "Tyle wyrwikółek nadal udaje parkingi rowerowe:"

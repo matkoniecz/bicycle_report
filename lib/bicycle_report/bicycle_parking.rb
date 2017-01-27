@@ -84,7 +84,7 @@ class BicycleParkingRaportGenerator < ReportGenerator
 			file.puts "<div class=\"shadowed_box\"><h1>"
 			file.puts good_count_estimated
 			file.puts "</h1>"
-			file.puts I18n.t("good_available_bicycle_parking_count")
+			file.puts I18n.t("bicycle_parking_real_parking_count_description")
 			file.puts "</div>"
 			file.puts section("wall_loop_title", "h4")
 			file.puts "<img src=https://www.camcycle.org.uk/resources/cycleparking/guide/wheelbenders.jpg>"
