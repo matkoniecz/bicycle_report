@@ -87,7 +87,7 @@ class BicycleParkingRaportGenerator < ReportGenerator
 			file.puts I18n.t("bicycle_parking_real_parking_count_description")
 			file.puts "</div>"
 			file.puts section("wall_loop_title", "h4")
-			file.puts "<img src=https://www.camcycle.org.uk/resources/cycleparking/guide/wheelbenders.jpg>"
+			file.puts "<img src=https://www.camcycle.org.uk/resources/cycleparking/guide/wheelbenders.jpg alt=#{"bicycle_parking_whelbender_image_alt"}>"
 			file.puts I18n.t("about_wall_loop")
 			file.puts get_progress_bar((good_count_estimated*100/tagged).to_i, "#{I18n.t("wall_loops_remaining")} #{bad_count_estimated}")
 		}
