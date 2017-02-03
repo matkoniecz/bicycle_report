@@ -37,7 +37,7 @@ class ReportGenerator
 	end
 
 	def get_progress_bar(percent, description=nil)
-		bar = "<div id=\"progressBar\" class=\"round-colored\">"
+		bar = "<div class=\"round-colored\">"
 		bar += "<div style=\"width: #{percent}%;\">#{percent}% </div>"
 		bar += "</div>"
 		if description != nil

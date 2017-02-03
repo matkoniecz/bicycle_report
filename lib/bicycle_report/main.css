@@ -33,19 +33,13 @@ h1 {
 	box-shadow: 0 -1px 1px #c0bfbc inset;
     width: 70%;
     margin: auto;
+  color: #fff;
 }
 
-#progressBar div {
-    color: #fff;
-    font-size: 12px;
-    height: 100%;
-    line-height: 22px;
-    width: 100%;
-}
 .round-colored div, .round-missing-data div {
     font-family: "Josefin Sans",Helvetica,Arial,sans-serif;
     font-size: 12px;
-    line-height: 16px;
+    line-height: 22px;
   	border-radius: 9px;
 	box-shadow: 0 2px 2px #333;	
 	background-color: #FF2626;
@@ -60,7 +54,7 @@ h1 {
 .round-missing-data div {
     font-family: "Josefin Sans",Helvetica,Arial,sans-serif;
     font-size: 12px;
-    line-height: 16px;
+    line-height: 22px;
   	border-radius: 9px;
 	box-shadow: 0 2px 2px #333;	
 	background-color: #f0f0f0;
