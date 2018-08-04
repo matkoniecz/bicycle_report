@@ -24,12 +24,12 @@ class CrossingReportGenerator < ReportGenerator
 		layer = Leafleter.get_positron_tile_Layer()
 
 		open(page, 'w') {|file|
-			file.puts Leafleter.get_before(title, @center_lat, @center_lon, @starting_zoom, layer, @map_width_percent, sidebar_content, './main.css')
+			file.puts Leafleter.get_html_page_prefix(title, @center_lat, @center_lon, @starting_zoom, layer, @map_width_percent, sidebar_content, './main.css')
 			style = {:color => "'red'", :opacity => 1}
 			@bad_crossings.each{|crossing|
 				file.puts Leafleter.get_circle_marker("nielegalny przejazd", crossing[:lat], crossing[:lon], 3, style)
 			}
-			file.puts Leafleter.get_after()
+			file.puts Leafleter.get_html_page_suffix()
 		}
 	end
 
@@ -39,7 +39,7 @@ class CrossingReportGenerator < ReportGenerator
 
 		open(page, 'w') {|file|
 			sidebar = get_progress_bar(@mapped_percent) + I18n.t("crossing_debug_sidebar")
-			file.puts Leafleter.get_before(title, @center_lat, @center_lon, @starting_zoom, layer, @map_width_percent, sidebar, './main.css')
+			file.puts Leafleter.get_html_page_prefix(title, @center_lat, @center_lon, @starting_zoom, layer, @map_width_percent, sidebar, './main.css')
 			style = {:color => "'black'", :opacity => 1}
 			@unknown_crossings.each{|crossing|
 				file.puts Leafleter.get_circle_marker("", crossing[:lat], crossing[:lon], 3, style)
@@ -58,7 +58,7 @@ class CrossingReportGenerator < ReportGenerator
 				file.puts Leafleter.get_circle_marker("", weird_block[:lat], weird_block[:lon], 3, style)
 				puts
 			}
-			file.puts Leafleter.get_after()
+			file.puts Leafleter.get_html_page_suffix()
 		}
 	end
 
