@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = '>= 1.8.23'
 
-  s.add_dependency 'i18n', '~>0'
+  s.add_dependency 'i18n', '~> 0.6.6'
   s.add_dependency 'leafleter', '~>0'
   s.add_dependency 'overhelper', '~>0'
   s.add_dependency 'rest-client', '~>1'
