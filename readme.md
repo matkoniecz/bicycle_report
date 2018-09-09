@@ -1,4 +1,4 @@
-Generator of bicycle infrastricture overview for a given area.
+Generates bicycle infrastructure listing and report for a given area.
 
 Results are based on the OpenStreetMap database and optional additional comments.
 
