@@ -1,3 +1,8 @@
+# will be created by tests
+main.css
+*.html
+cache
+
 *.kate-swp
 
 ### Ruby template
