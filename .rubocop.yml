@@ -1,19 +1,5 @@
+inherit_gem:
+  matkoniecz-ruby-style:
+    - standard_rubocop_config.yml
+
 inherit_from: .rubocop_todo.yml
-Style/AccessorMethodName:
-  Enabled: false
-
-Style/RedundantReturn:
-  Enabled: false
-
-Style/AsciiComments:
-  Enabled: false
-
-Style/BlockComments:
-  Enabled: false
-
-Style/StringLiterals:
-  Enabled: false
-
-#see https://github.com/bbatsov/rubocop/issues/1747
-Style/SpecialGlobalVars:
-  Enabled: false

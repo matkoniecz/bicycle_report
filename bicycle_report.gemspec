@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   #digest/sha1 is from stdlib
 
   s.add_development_dependency 'rspec', '~>3'
+  s.add_development_dependency 'matkoniecz-ruby-style'
 
   # If you need to check in files that aren't .rb files, add them here
   s.files        = Dir['{lib}/**/*.rb', 'bin/*', '*.txt', '*.md']
